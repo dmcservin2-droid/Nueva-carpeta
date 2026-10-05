@@ -1,0 +1,18 @@
+<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Activando Nota Clara</title><link rel="stylesheet" href="styles.css"><meta name="theme-color" content="#f7f1e6"></head>
+<body><main class="container legal" style="min-height:80vh;display:grid;place-items:center;text-align:center"><div><div class="eyebrow">nota clara</div><h1 class="serif" style="margin-bottom:14px">Activando tu compra…</h1><p id="msg">Estamos preparando tu espacio para escribir.</p></div></main>
+<script>
+(() => {
+ const p=new URLSearchParams(location.search), token=p.get('token'), sid=p.get('session_id');
+ const msg=document.getElementById('msg');
+ if(token==="5054fd60-acee-453d-b762-69a01934174a" && sid && sid.startsWith('cs_')) {
+   localStorage.setItem('nota_clara_paid_v1','true');
+   localStorage.setItem('nota_clara_paid_at',new Date().toISOString());
+   localStorage.setItem('nota_clara_checkout_session',sid);
+   msg.textContent='Listo. Abriendo Nota Clara…';
+   setTimeout(()=>location.replace('app.html'),500);
+ } else {
+   msg.textContent='No pudimos reconocer esta activación. Vuelve a la página de compra.';
+   setTimeout(()=>location.replace('index.html#preguntas'),2200);
+ }
+})();
+</script></body></html>
