@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nota Clara — Mis notas</title><meta name="theme-color" content="#f7f1e6"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"></head>
+<body class="app-shell">
+<header class="app-top"><div class="container"><a class="brand" href="app.html">nota clara.</a><div class="app-actions"><button id="themeBtn" class="iconbtn" title="Cambiar tema" aria-label="Cambiar tema">☼</button><a class="iconbtn" href="index.html" title="Acerca de Nota Clara" aria-label="Acerca de Nota Clara">?</a></div></div></header>
+<main class="container app-main">
+  <div class="toolbar">
+    <label class="search"><span class="mag">⌕</span><input id="searchInput" type="search" placeholder="Buscar en tus notas…" aria-label="Buscar notas"></label>
+    <div class="filters"><button id="sortBtn" class="filter" type="button">Recientes ↓</button><button id="viewBtn" class="filter" type="button">Cuadrícula</button></div>
+  </div>
+  <div class="tabs"><button class="tab active" data-tab="notes">Notas</button><button class="tab" data-tab="trash">Papelera <span id="trashCount"></span></button></div>
+  <section id="notesList" class="note-list grid" aria-live="polite"></section>
+  <div class="backupbar"><button id="exportBtn" class="filter">Exportar respaldo</button><button id="importBtn" class="filter">Importar respaldo</button><input id="importFile" type="file" accept=".json,application/json" hidden></div>
+  <p class="small">Privacidad local: tus notas se guardan únicamente en este navegador. Guarda respaldos fuera del dispositivo.</p>
+</main>
+<button id="newBtn" class="newnote" aria-label="Nueva nota">+</button>
+
+<div id="editorBack" class="modalback" role="dialog" aria-modal="true" aria-labelledby="editorTitleLabel">
+  <div id="editorModal" class="modal" style="background:var(--note1)">
+    <label id="editorTitleLabel" class="small" for="titleInput">Título</label>
+    <input id="titleInput" class="editor-title" maxlength="500" placeholder="Título">
+    <textarea id="bodyInput" class="editor-body" placeholder="Escribe lo que tengas en mente…"></textarea>
+    <div class="editor-foot">
+      <div id="swatches" class="swatches" aria-label="Color de la nota"></div>
+      <div class="spacer"></div>
+      <span id="saveState" class="small">Guardado</span>
+      <button id="pinBtn" class="ghost" type="button">Fijar</button>
+      <button id="trashBtn" class="danger" type="button">Papelera</button>
+      <button id="closeBtn" class="ghost" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>
